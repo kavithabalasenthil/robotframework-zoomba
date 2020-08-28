@@ -157,6 +157,7 @@ class DesktopLibrary(AppiumLibrary):
         desired_caps = kwargs
         desktop_session = self._open_desktop_session(remote_url)
         try:
+            print("trying")
             window = desktop_session.find_element_by_name(window_name)
             self._debug('Window_name "%s" found.' % window_name)
             window = hex(int(window.get_attribute("NativeWindowHandle")))
