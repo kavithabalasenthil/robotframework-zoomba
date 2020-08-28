@@ -639,13 +639,16 @@ class DesktopLibrary(AppiumLibrary):
 
     def _open_desktop_session(self, remote_url, alias="Desktop"):
         try:
+            print("check for desktop session")
             return self._cache.get_connection(alias)
         except RuntimeError:
             self._debug('Creating new desktop session')
+            print("new root session")
             desktop_capabilities = dict({"app": "Root", "platformName": "Windows", "deviceName": "Windows",
                                          "newCommandTimeout": 3600})
             desktop_session = webdriver.Remote(str(remote_url), desktop_capabilities)
             self._cache.register(desktop_session, alias=alias)
+            print("returning desktop session")
             return desktop_session
 
     def _element_find(self, locator, first_only, *kwargs):
