@@ -644,7 +644,7 @@ class DesktopLibrary(AppiumLibrary):
         except RuntimeError:
             self._debug('Creating new desktop session')
             print("new root session")
-            desktop_capabilities = dict({"app": "Root", "platformName": "Windows", "deviceName": "Windows",
+            desktop_capabilities = dict({"app": "Root", "platformName": "Windows", "deviceName": "WindowsPC",
                                          "newCommandTimeout": 3600})
             desktop_session = webdriver.Remote(str(remote_url), desktop_capabilities)
             self._cache.register(desktop_session, alias=alias)
